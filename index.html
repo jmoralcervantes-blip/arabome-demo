@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARABÔME · Demo</title>
+<meta name="description" content="Demo de la web de ARABÔME, The Arabian Fragrance House.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#080808;--panel:#11100E;--line:#2A2621;--line2:#3A342C;--gold:#C9A45C;--gold2:#E2C487;--ink:#F3EDE2;--mute:#A8A095;--dim:#8A8276}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Jost',system-ui,sans-serif;font-weight:300;line-height:1.6}
+a{color:var(--gold)}a:hover{color:var(--gold2)}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.eyebrow{margin:0;color:var(--gold);font-size:13px;letter-spacing:.32em;text-transform:uppercase}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;margin:0;line-height:1.1}
+h2{font-size:clamp(32px,4.5vw,46px)}
+p{margin:0}
+.muted{color:var(--mute)}
+.banner{background:var(--gold);color:var(--bg);text-align:center;font-size:13px;letter-spacing:.08em;padding:8px 16px;font-weight:400}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(8,8,8,.95);backdrop-filter:blur(6px);z-index:20}
+.head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:16px;padding-bottom:16px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.22em;color:var(--gold);text-decoration:none;font-weight:500}
+nav.main{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+nav.main a{color:var(--ink);text-decoration:none;padding:8px 0}
+nav.main a.on{color:var(--gold)}
+.tools{display:flex;align-items:center;gap:16px;font-size:13px;letter-spacing:.1em}
+.lang b{color:var(--gold);font-weight:500}.lang span{color:var(--mute)}
+.iconbtn{display:flex;align-items:center;gap:6px;color:var(--ink);background:none;border:0;font:inherit;min-height:44px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:var(--gold);color:var(--bg);text-decoration:none;padding:0 30px;font:500 14px 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;border:0;cursor:pointer}
+.btn:hover{background:var(--gold2);color:var(--bg)}
+.btn.ghost{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn.ghost:hover{background:rgba(201,164,92,.1)}
+section{padding:90px 0}
+.band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hero{text-align:center;padding:110px 0 100px;display:flex;flex-direction:column;align-items:center;gap:26px}
+.hero h1{font-size:clamp(40px,6vw,76px);max-width:900px}
+.hero p.lead{font-size:18px;max-width:620px}
+.row{display:flex;flex-wrap:wrap;gap:16px}
+.center{justify-content:center}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.card{background:var(--panel);border:1px solid var(--line);padding:32px;display:flex;flex-direction:column;gap:12px}
+.card .num{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:28px}
+.card h3{font-size:28px;font-weight:500}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:44px}
+.sechead>div{display:flex;flex-direction:column;gap:12px}
+.prod{text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:16px;cursor:pointer}
+.prod .img{height:340px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;transition:border-color .2s}
+.prod:hover .img{border-color:var(--gold)}
+.tag{position:absolute;top:14px;left:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:4px 10px}
+.tag.out{background:transparent;color:var(--gold);border:1px solid #6B5631}
+.fam{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.pname{font-family:'Cormorant Garamond',serif;font-size:28px}
+.bottle{display:flex;flex-direction:column;align-items:center}
+.bottle .cap{background:var(--gold);border-radius:3px 3px 0 0}
+.bottle .neck{background:#8C7444}
+.bottle .body{border:1px solid #6B5631;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.bottle .body span{font-family:'Cormorant Garamond',serif;letter-spacing:.24em;color:var(--gold2)}
+.split{display:flex;flex-wrap:wrap;align-items:center;gap:56px}
+.split>div{flex:1 1 380px}
+.stack{display:flex;flex-direction:column;gap:20px}
+.boxed{border:1px solid var(--gold);padding:64px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.video{height:220px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative}
+.play{width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center}
+form .fields{display:flex;flex-wrap:wrap;gap:16px}
+label.f{flex:1 1 220px;display:flex;flex-direction:column;gap:6px;font-size:13px;letter-spacing:.1em;color:var(--mute)}
+input[type=text],input[type=email],textarea{background:var(--bg);border:1px solid var(--line2);color:var(--ink);padding:14px 16px;font:16px 'Jost',sans-serif}
+input:focus,textarea:focus{outline:1px solid var(--gold);border-color:var(--gold)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--mute);line-height:1.5}
+.check input{margin-top:4px;accent-color:var(--gold)}
+.ok{color:var(--gold);font-size:18px;border:1px solid #6B5631;padding:18px 24px}
+footer{border-top:1px solid var(--line)}
+.foot{padding-top:48px;padding-bottom:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;color:var(--mute)}
+.foot>div{display:flex;flex-direction:column;gap:8px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{min-height:44px;padding:0 20px;font:13px 'Jost',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.pill.on{background:var(--gold);color:var(--bg)}
+.pdp{display:flex;flex-wrap:wrap;gap:56px}
+.pdp .gal{flex:1 1 440px;display:flex;flex-direction:column;gap:14px}
+.pdp .gal .main{height:540px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.thumbs{display:flex;gap:14px}.thumbs div{flex:1;height:100px;background:var(--panel);border:1px solid var(--line)}.thumbs div:first-child{border-color:var(--gold)}
+.pdp .info{flex:1 1 400px;display:flex;flex-direction:column;gap:22px}
+.qty{display:flex;align-items:center;border:1px solid var(--line2)}
+.qty button{width:48px;height:52px;background:none;border:0;color:var(--ink);font-size:20px;cursor:pointer}
+.qty span{width:36px;text-align:center}
+.notes div{display:flex;gap:16px;align-items:baseline}
+.notes b{width:110px;flex:none;font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:20px;font-weight:400}
+.hr{border-top:1px solid var(--line);padding-top:20px}
+.mini{text-decoration:none;color:var(--ink);display:flex;gap:18px;align-items:center;border:1px solid var(--line);padding:18px;cursor:pointer}
+.mini:hover{border-color:var(--gold)}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;justify-content:flex-end;z-index:50}
+.drawer.open{display:flex}
+.drawer aside{width:min(420px,100%);background:var(--panel);border-left:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:22px;overflow:auto}
+.x{width:44px;height:44px;background:none;border:1px solid var(--line2);color:var(--ink);cursor:pointer;font-size:20px}
+.line{display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}
+.quiz{max-width:820px;margin:0 auto}
+.bar{height:2px;background:var(--line)}.bar i{display:block;height:2px;background:var(--gold);transition:width .3s}
+.opt{text-align:left;min-height:72px;padding:18px 24px;background:var(--panel);border:1px solid var(--line2);color:var(--ink);font-family:inherit;cursor:pointer;display:flex;flex-direction:column;gap:4px;width:100%}
+.opt:hover{border-color:var(--gold)}
+.opt b{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400}
+.link{background:none;border:0;color:var(--gold);font:14px 'Jost',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:0;min-height:44px;align-self:flex-start}
+.view{display:none}.view.on{display:block}
+@media (max-width:640px){section{padding:64px 0}.hero{padding:72px 0}.prod .img{height:300px}.pdp .gal .main{height:400px}.boxed{padding:44px 20px}}
+</style>
+</head>
+<body>
+<div class="banner">VERSIÓN DEMO · Productos y precios de ejemplo</div>
+
+<header>
+<div class="wrap head">
+<a class="logo" href="#inicio">ARABÔME</a>
+<nav class="main" aria-label="Principal">
+<a href="#coleccion" data-nav="coleccion">Colección</a>
+<a href="#recomendador" data-nav="recomendador">Recomendador</a>
+<a href="#inicio/estela" data-nav="estela">Tras la estela</a>
+<a href="#inicio/profesional" data-nav="profesional">Profesional</a>
+</nav>
+<div class="tools">
+<span class="lang"><b>ES</b> <span>|</span> <span>EN</span></span>
+<button class="iconbtn" type="button" onclick="openCart()" aria-label="Abrir carrito">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+<span id="cartCount">0</span>
+</button>
+</div>
+</div>
+</header>
+
+<main>
+<!-- INICIO -->
+<div class="view" id="v-inicio">
+<div class="wrap hero">
+<p class="eyebrow">The Arabian Fragrance House</p>
+<h1>La perfumería árabe está a punto de dejar una nueva estela.</h1>
+<p class="lead muted">Descubre perfumes, historias, materias primas y creadores de uno de los universos olfativos más fascinantes del mundo.</p>
+<div class="row center" style="margin-top:10px">
+<a class="btn" href="#coleccion">Descubrir la colección</a>
+<a class="btn ghost" href="#recomendador">Encuentra tu perfume</a>
+</div>
+</div>
+
+<section class="band">
+<div class="wrap">
+<div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;margin-bottom:52px">
+<p class="eyebrow">La visión Arabôme</p>
+<h2>Más que perfumes. Un mundo por descubrir.</h2>
+</div>
+<div class="grid3">
+<div class="card"><span class="num">01</span><h3>Descubrimiento</h3><p class="muted">Perfumes, marcas y creaciones que merece la pena conocer.</p></div>
+<div class="card"><span class="num">02</span><h3>Conocimiento</h3><p class="muted">Historias, ingredientes, perfumistas y cultura olfativa.</p></div>
+<div class="card"><span class="num">03</span><h3>Experiencia</h3><p class="muted">Recomendaciones, muestras, encuentros y nuevas formas de elegir.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sechead">
+<div><p class="eyebrow">Selección cuidada</p><h2>Colección destacada</h2></div>
+<a href="#coleccion" style="font-size:14px;letter-spacing:.14em;text-transform:uppercase">Ver toda la colección →</a>
+</div>
+<div class="grid3" id="featured"></div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap split">
+<div class="stack">
+<p class="eyebrow">Muestras · Discovery Boxes</p>
+<h2>Prueba antes de elegir tu perfume.</h2>
+<p class="muted" style="font-size:17px">Cinco muestras seleccionadas para descubrir el oud, el ámbar, las maderas y las especias desde casa, antes de elegir tu frasco.</p>
+<div class="row" style="align-items:center"><a class="btn" href="#producto/discovery-box">Ver Discovery Box</a><span class="serif" style="font-size:26px">25 €</span></div>
+</div>
+<div style="display:flex;justify-content:center;gap:14px;align-items:flex-end;padding:30px 0" id="vials"></div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="boxed">
+<p class="eyebrow">Recomendador olfativo</p>
+<h2>¿No sabes por dónde empezar?</h2>
+<p class="muted" style="font-size:17px;max-width:560px">Responde cuatro preguntas sobre lo que te gusta y te sugerimos los perfumes que mejor encajan contigo.</p>
+<a class="btn" href="#recomendador" style="margin-top:8px">Empezar el test</a>
+</div>
+</div>
+</section>
+
+<section id="estela" style="border-top:1px solid var(--line)">
+<div class="wrap">
+<div class="stack" style="max-width:700px;gap:14px;margin-bottom:44px">
+<p class="eyebrow">Historias que permanecen en el aire</p>
+<h2>Tras la estela <em style="color:var(--gold)">by Arabôme</em></h2>
+<p class="muted" style="font-size:17px">Exploramos los perfumes, las personas, los lugares y las historias que han dejado huella en el mundo de la perfumería.</p>
+</div>
+<div class="grid3">
+<div class="stack" style="gap:14px"><div class="video"><span class="tag out">Próximamente</span><div class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A45C" stroke-width="1.5" aria-hidden="true"><path d="M8 5l11 7-11 7V5z"/></svg></div></div><h3 style="font-size:26px;font-weight:500">Tras la estela de los famosos</h3></div>
+<div class="stack" style="gap:14px"><div class="video"><span class="tag out">Próximamente</span><div class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A45C" stroke-width="1.5" aria-hidden="true"><path d="M8 5l11 7-11 7V5z"/></svg></div></div><h3 style="font-size:26px;font-weight:500">Tras la estela de los perfumistas</h3></div>
+<div class="stack" style="gap:14px"><div class="video"><span class="tag out">Próximamente</span><div class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A45C" stroke-width="1.5" aria-hidden="true"><path d="M8 5l11 7-11 7V5z"/></svg></div></div><h3 style="font-size:26px;font-weight:500">Ciudades, materias primas y culturas</h3></div>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap" style="max-width:760px;text-align:center;display:flex;flex-direction:column;gap:24px;align-items:center">
+<p class="eyebrow">Comunidad Arabôme</p>
+<h2>Forma parte desde el principio.</h2>
+<p class="muted" style="font-size:17px">Únete para recibir inspiración, nuevos vídeos, invitaciones a encuentros y acceso anticipado a los lanzamientos.</p>
+<form id="joinForm" style="width:100%;display:flex;flex-direction:column;gap:16px;text-align:left" onsubmit="event.preventDefault();this.outerHTML='<p class=&quot;ok&quot;>Gracias. Revisa tu email para confirmar la inscripción. (Demo: no se ha enviado nada)</p>'">
+<div class="fields">
+<label class="f">Tu nombre<input type="text" required></label>
+<label class="f">Email<input type="email" required></label>
+</div>
+<label class="check"><input type="checkbox" required><span>Acepto recibir comunicaciones de ARABÔME y he leído la <a href="#inicio">Política de privacidad</a>.</span></label>
+<button class="btn" type="submit" style="align-self:center">Quiero formar parte</button>
+</form>
+</div>
+</section>
+
+<section id="profesional">
+<div class="wrap split" style="justify-content:space-between">
+<div class="stack" style="gap:14px;flex:1 1 480px">
+<p class="eyebrow">Marcas, distribuidores y mayoristas</p>
+<h2>Construyamos una relación a largo plazo.</h2>
+<p class="muted" style="font-size:17px">Arabôme está desarrollando su red de marcas, distribuidores y socios estratégicos para el mercado español.</p>
+</div>
+<div style="flex:0 1 auto"><a class="btn ghost" href="mailto:comunidad@arabome.com">Hablar con Arabôme</a></div>
+</div>
+</section>
+</div>
+
+<!-- COLECCIÓN -->
+<div class="view" id="v-coleccion">
+<section style="padding-bottom:30px">
+<div class="wrap stack" style="gap:16px">
+<p class="eyebrow">Selección cuidada</p>
+<h1 style="font-size:clamp(40px,5vw,64px)">La colección</h1>
+<p class="muted" style="font-size:17px;max-width:620px">Cada perfume está disponible en frasco de 100 ml o en muestra de 2 ml para descubrirlo antes.</p>
+</div>
+</section>
+<div class="wrap">
+<div class="pills" id="filters" role="group" aria-label="Filtrar por familia olfativa" style="border-bottom:1px solid var(--line);padding-bottom:26px"></div>
+<p class="muted" id="count" style="margin-top:18px;font-size:14px"></p>
+</div>
+<section style="padding-top:28px">
+<div class="wrap grid3" id="catalog" style="row-gap:36px"></div>
+</section>
+</div>
+
+<!-- PRODUCTO -->
+<div class="view" id="v-producto">
+<div class="wrap" style="padding-top:24px;font-size:13px;color:var(--mute);letter-spacing:.08em">
+<a href="#inicio">Inicio</a> / <a href="#coleccion">Colección</a> / <span id="crumb"></span>
+</div>
+<section style="padding-top:30px">
+<div class="wrap pdp">
+<div class="gal"><div class="main" id="pdpImg"></div><div class="thumbs"><div></div><div></div><div></div></div></div>
+<div class="info">
+<span class="fam" id="pdpFam"></span>
+<h1 id="pdpName" style="font-size:clamp(42px,5vw,58px);line-height:1"></h1>
+<p class="muted" id="pdpDesc" style="font-size:17px;line-height:1.75"></p>
+<span class="serif" id="pdpPrice" style="font-size:34px"></span>
+<div class="stack" style="gap:10px" id="formatWrap">
+<span style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)">Formato</span>
+<div class="pills" id="formats" role="group" aria-label="Formato"></div>
+</div>
+<div class="row" style="gap:12px">
+<div class="qty"><button type="button" onclick="setQty(-1)" aria-label="Quitar una unidad">−</button><span id="qty">1</span><button type="button" onclick="setQty(1)" aria-label="Añadir una unidad">+</button></div>
+<button class="btn" type="button" onclick="addToCart()" style="flex:1 1 220px">Añadir al carrito</button>
+</div>
+<div class="hr muted" style="font-size:14px;display:flex;flex-direction:column;gap:4px">
+<span>Envío con seguimiento del pedido por email</span>
+<span>Pago seguro con Shopify</span>
+</div>
+<div class="hr stack notes" style="gap:14px" id="pdpNotes"></div>
+</div>
+</div>
+</section>
+<section style="border-top:1px solid var(--line);padding-top:70px">
+<div class="wrap">
+<h2 style="font-size:40px;margin-bottom:32px">También te puede gustar</h2>
+<div class="grid3" id="related"></div>
+</div>
+</section>
+</div>
+
+<!-- RECOMENDADOR -->
+<div class="view" id="v-recomendador">
+<section>
+<div class="wrap quiz stack" style="gap:34px" id="quiz"></div>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="wrap foot">
+<div><span class="serif" style="font-size:22px;letter-spacing:.22em;color:var(--gold)">ARABÔME</span><span>The Arabian Fragrance House · Madrid · Spain</span></div>
+<div><a href="mailto:comunidad@arabome.com">comunidad@arabome.com</a><span><a href="#inicio">Privacidad</a> · <a href="#inicio">Envíos y devoluciones</a> · <a href="#inicio">Condiciones de venta</a></span><span style="font-size:12px;color:var(--dim)">Versión demo · Pagos seguros con Shopify</span></div>
+</div>
+</footer>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()">
+<aside aria-label="Carrito">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:32px">Tu carrito</h2><button class="x" type="button" onclick="closeCart()" aria-label="Cerrar carrito">×</button></div>
+<div id="cartBody" class="stack" style="gap:18px"></div>
+</aside>
+</div>
+
+<script>
+const P = [
+ {id:'oud-al-layl',n:'Oud Al Layl',f:'Oud',k:'Oud',notes:'Oud, rosa negra, cuero',p:145,m:6,t:'#2A1A12',tag:'Más deseado',d:'Una noche en el desierto contada con oud ahumado, rosa negra y un fondo de cuero suave. Intenso al principio, envolvente durante horas.',py:[['Salida','Azafrán, pimienta rosa'],['Corazón','Rosa negra, oud'],['Fondo','Cuero, ámbar, pachulí']]},
+ {id:'amber-sahara',n:'Amber Sahara',f:'Ámbar',k:'Ambar',notes:'Ámbar, vainilla, benjuí',p:120,m:5,t:'#4A2E12',d:'La calidez de la arena al atardecer: ámbar dorado, vainilla de Madagascar y benjuí resinoso. Dulce, cálido y muy cercano.',py:[['Salida','Bergamota, canela'],['Corazón','Ámbar, benjuí'],['Fondo','Vainilla, almizcle']]},
+ {id:'rose-of-taif',n:'Rose of Taif',f:'Floral oriental',k:'Floral',notes:'Rosa de Taif, azafrán, almizcle',p:135,m:6,t:'#3A1620',tag:'Novedad',d:'La rosa más preciada de Arabia, envuelta en hebras de azafrán y un almizcle limpio. Floral, luminoso y con carácter.',py:[['Salida','Azafrán, lichi'],['Corazón','Rosa de Taif'],['Fondo','Almizcle, madera de agar']]},
+ {id:'saffron-majlis',n:'Saffron Majlis',f:'Especias',k:'Especias',notes:'Azafrán, cardamomo, madera de agar',p:128,m:5,t:'#3A2814',d:'Inspirado en el majlis, el salón donde se recibe a los invitados: café con cardamomo, azafrán y maderas preciosas.',py:[['Salida','Cardamomo, café'],['Corazón','Azafrán, clavo'],['Fondo','Madera de agar, cedro']]},
+ {id:'sandal-mirage',n:'Sandal Mirage',f:'Maderas',k:'Maderas',notes:'Sándalo, cedro, incienso',p:115,m:5,t:'#1E2416',d:'Un espejismo sereno de sándalo cremoso, cedro seco y un hilo de incienso. Elegante y fácil de llevar a diario.',py:[['Salida','Cítricos, pimienta'],['Corazón','Sándalo, incienso'],['Fondo','Cedro, vetiver']]},
+ {id:'musk-qamar',n:'Musk Qamar',f:'Ámbar',k:'Ambar',notes:'Almizcle blanco, ámbar gris, azahar',p:110,m:5,t:'#2E2A26',d:'Qamar significa luna: un almizcle blanco suave con ámbar gris y flor de azahar. Delicado, limpio y envolvente.',py:[['Salida','Flor de azahar'],['Corazón','Almizcle blanco'],['Fondo','Ámbar gris']]},
+ {id:'discovery-box',n:'Discovery Box',f:'Muestras',k:'Muestras',notes:'5 muestras de 2 ml a elegir',p:25,m:null,t:'#1A1714',tag:'Para empezar',box:true,d:'Cinco muestras de 2 ml para descubrir la colección desde casa y elegir tu perfume con calma.',py:[['Incluye','5 muestras de 2 ml a elegir'],['Ideal para','Descubrir o regalar']]}
+];
+const byId = id => P.find(x=>x.id===id);
+const eur = n => n + ' €';
+const priceFrom = x => x.m ? 'Desde ' + eur(x.p) : eur(x.p);
+
+function bottle(x, s){
+ s = s || 1;
+ if(x.box){
+  return `<div style="display:flex;gap:${8*s}px;align-items:flex-end">${[60,74,88,74,60].map((h,i)=>`<div class="bottle"><div class="cap" style="width:${10*s}px;height:${9*s}px"></div><div class="body" style="width:${24*s}px;height:${h*s}px;border-radius:${6*s}px;background:${['#2A1A12','#4A2E12','#3A1620','#3A2814','#1E2416'][i]}"></div></div>`).join('')}</div>`;
+ }
+ return `<div class="bottle"><div class="cap" style="width:${26*s}px;height:${22*s}px"></div><div class="neck" style="width:${16*s}px;height:${8*s}px"></div><div class="body" style="width:${104*s}px;height:${140*s}px;border-radius:${16*s}px;background:${x.t}"><span style="font-size:${11*s}px">ARABÔME</span></div></div>`;
+}
+function card(x){
+ return `<a class="prod" href="#producto/${x.id}"><div class="img">${x.tag?`<span class="tag">${x.tag}</span>`:''}${bottle(x)}</div><div style="display:flex;flex-direction:column;gap:6px"><span class="fam">${x.f}</span><span class="pname">${x.n}</span><span class="muted" style="font-size:15px">${x.notes}</span><span style="font-size:16px;margin-top:4px">${x.m?eur(x.p)+' · muestra '+eur(x.m):eur(x.p)}</span></div></a>`;
+}
+function mini(x){
+ return `<a class="mini" href="#producto/${x.id}"><div class="bottle"><div class="cap" style="width:14px;height:12px"></div><div class="body" style="width:46px;height:64px;border-radius:8px;background:${x.t}"></div></div><div style="display:flex;flex-direction:column;gap:2px"><span class="fam">${x.f}</span><span class="serif" style="font-size:24px">${x.n}</span><span class="muted" style="font-size:14px">${priceFrom(x)}</span></div></a>`;
+}
+
+/* Inicio */
+document.getElementById('featured').innerHTML = ['oud-al-layl','amber-sahara','rose-of-taif'].map(id=>card(byId(id))).join('');
+document.getElementById('vials').innerHTML = bottle(byId('discovery-box'), 1.4);
+
+/* Colección */
+let filter = 'Todos';
+function renderCatalog(){
+ const fams = ['Todos','Oud','Ámbar','Maderas','Especias','Floral oriental','Muestras'];
+ document.getElementById('filters').innerHTML = fams.map(f=>`<button type="button" class="pill${f===filter?' on':''}" aria-pressed="${f===filter}" onclick="filter='${f}';renderCatalog()">${f}</button>`).join('');
+ const list = filter==='Todos'?P:P.filter(x=>x.f===filter);
+ document.getElementById('count').textContent = list.length + (list.length===1?' producto':' productos');
+ document.getElementById('catalog').innerHTML = list.map(card).join('');
+}
+
+/* Producto */
+let cur = null, fmt = '100 ml', qty = 1;
+const cart = [];
+function renderProduct(id){
+ cur = byId(id) || P[0]; fmt = cur.m ? '100 ml' : 'Caja'; qty = 1;
+ document.title = 'ARABÔME · ' + cur.n;
+ document.getElementById('crumb').textContent = cur.n;
+ document.getElementById('pdpImg').innerHTML = bottle(cur, cur.box?2:1.8);
+ document.getElementById('pdpFam').textContent = cur.f + (cur.box?'':' · Eau de parfum');
+ document.getElementById('pdpName').textContent = cur.n;
+ document.getElementById('pdpDesc').textContent = cur.d;
+ document.getElementById('pdpNotes').innerHTML = `<span style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)">${cur.box?'Detalles':'Pirámide olfativa'}</span>` + cur.py.map(r=>`<div><b>${r[0]}</b><span>${r[1]}</span></div>`).join('');
+ document.getElementById('formatWrap').style.display = cur.m ? '' : 'none';
+ document.getElementById('related').innerHTML = P.filter(x=>x.id!==cur.id).slice(0,3).map(mini).join('');
+ renderFormat();
+}
+function renderFormat(){
+ document.getElementById('formats').innerHTML = ['100 ml','Muestra 2 ml'].map(f=>`<button type="button" class="pill${f===fmt?' on':''}" aria-pressed="${f===fmt}" style="text-transform:none;letter-spacing:0;font-size:15px;min-height:48px" onclick="fmt='${f}';renderFormat()">${f}</button>`).join('');
+ document.getElementById('pdpPrice').textContent = eur(fmt==='Muestra 2 ml'?cur.m:cur.p);
+ document.getElementById('qty').textContent = qty;
+}
+function setQty(d){ qty = Math.max(1, qty + d); document.getElementById('qty').textContent = qty; }
+function addToCart(){
+ const price = fmt==='Muestra 2 ml'?cur.m:cur.p;
+ const ex = cart.find(l=>l.id===cur.id && l.fmt===fmt);
+ if(ex) ex.q += qty; else cart.push({id:cur.id, n:cur.n, t:cur.t, fmt, price, q:qty});
+ renderCart(); openCart();
+}
+
+/* Carrito */
+function renderCart(){
+ const units = cart.reduce((a,l)=>a+l.q,0);
+ document.getElementById('cartCount').textContent = units;
+ const body = document.getElementById('cartBody');
+ if(!cart.length){ body.innerHTML = '<p class="muted">Tu carrito está vacío.</p><a class="btn ghost" href="#coleccion" onclick="closeCart()">Ver la colección</a>'; return; }
+ const total = cart.reduce((a,l)=>a+l.q*l.price,0);
+ body.innerHTML = cart.map((l,i)=>`<div class="line"><div class="bottle"><div class="cap" style="width:14px;height:12px"></div><div class="body" style="width:46px;height:64px;border-radius:8px;background:${l.t}"></div></div><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span class="serif" style="font-size:22px">${l.n}</span><span class="muted" style="font-size:14px">${l.fmt} · ${l.q} ${l.q===1?'unidad':'unidades'}</span><button class="link" style="min-height:32px;font-size:12px" onclick="cart.splice(${i},1);renderCart()">Quitar</button></div><span>${eur(l.q*l.price)}</span></div>`).join('')
+ + `<div style="display:flex;justify-content:space-between;font-size:17px"><span>Subtotal</span><span>${eur(total)}</span></div><p class="muted" style="font-size:13px">Gastos de envío e impuestos calculados en el pago.</p><button class="btn" type="button" onclick="this.nextElementSibling.style.color='var(--gold)'">Finalizar compra</button><p style="font-size:12px;color:var(--dim);text-align:center">En la web real, este botón abre el pago seguro de Shopify.</p>`;
+}
+function openCart(){ renderCart(); document.getElementById('drawer').classList.add('open'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCart(); });
+
+/* Recomendador */
+const Q = [
+ {q:'¿Qué intensidad buscas en un perfume?',o:[['Suave y cercano','Que se note al acercarse',{Floral:2,Ambar:2}],['Equilibrado','Presente sin imponerse',{Maderas:2,Especias:1}],['Intenso y con estela','Que deje huella al pasar',{Oud:3,Especias:1}]]},
+ {q:'¿Cuándo lo llevarías más?',o:[['De día','Trabajo, paseos, el día a día',{Floral:1,Maderas:2}],['De noche','Cenas, salidas, momentos especiales',{Oud:2,Ambar:1}],['A cualquier hora','Un perfume para todo',{Ambar:1,Especias:1,Maderas:1}]]},
+ {q:'¿Qué te atrae más?',o:[['Flores','Rosa, azahar, jazmín',{Floral:3}],['Maderas y resinas','Sándalo, cedro, incienso',{Maderas:3,Oud:1}],['Especias cálidas','Azafrán, cardamomo, pimienta',{Especias:3}],['Dulce y ambarado','Vainilla, ámbar, benjuí',{Ambar:3}]]},
+ {q:'¿Para qué ocasión es?',o:[['Para mí, a diario','Mi perfume de cada día',{Maderas:1,Ambar:1}],['Para ocasiones especiales','Algo memorable',{Oud:2,Floral:1}],['Para regalar','Acertar con otra persona',{Ambar:1,Floral:1}]]}
+];
+const PERFIL = {Oud:'Profundo y nocturno',Ambar:'Cálido y envolvente',Floral:'Floral y luminoso',Especias:'Especiado y magnético',Maderas:'Sereno y amaderado'};
+let step = 0, answers = [];
+function renderQuiz(){
+ const el = document.getElementById('quiz');
+ if(step < Q.length){
+  const c = Q[step];
+  el.innerHTML = `<div class="stack" style="gap:12px"><p class="eyebrow">Recomendador olfativo · Pregunta ${step+1} de ${Q.length}</p><div class="bar"><i style="width:${(step+1)/Q.length*100}%"></i></div></div><h1 style="font-size:clamp(34px,5vw,54px)">${c.q}</h1><div class="stack" style="gap:12px">${c.o.map((o,i)=>`<button type="button" class="opt" onclick="answer(${i})"><b>${o[0]}</b><span class="muted" style="font-size:15px">${o[1]}</span></button>`).join('')}</div>${step>0?'<button type="button" class="link" onclick="step--;renderQuiz()">← Pregunta anterior</button>':''}`;
+ } else {
+  const pts = {};
+  answers.forEach(a=>Object.keys(a).forEach(k=>pts[k]=(pts[k]||0)+a[k]));
+  const order = Object.keys(pts).sort((a,b)=>pts[b]-pts[a]);
+  const recs = [];
+  order.forEach(k=>P.filter(x=>x.k===k).forEach(x=>{ if(recs.length<2) recs.push(x); }));
+  el.innerHTML = `<div class="stack" style="gap:14px"><p class="eyebrow">Tu perfil olfativo</p><h1 style="font-size:clamp(34px,5vw,54px)">${PERFIL[order[0]]}</h1><p class="muted" style="font-size:17px">Estos son los perfumes que mejor encajan con tus respuestas. Si dudas, empieza por las muestras.</p></div><div class="grid3">${recs.map(mini).join('')}${mini(byId('discovery-box'))}</div><div class="row"><a class="btn" href="#coleccion">Ver la colección</a><button type="button" class="btn ghost" onclick="step=0;answers=[];renderQuiz()">Repetir el test</button></div>`;
+ }
+}
+function answer(i){ answers = answers.slice(0, step); answers.push(Q[step].o[i][2]); step++; renderQuiz(); window.scrollTo(0,0); }
+
+/* Rutas */
+function route(){
+ const h = (location.hash || '#inicio').slice(1).split('/');
+ let view = h[0] || 'inicio';
+ if(!['inicio','coleccion','producto','recomendador'].includes(view)) view = 'inicio';
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on', v.id==='v-'+view));
+ document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on', a.dataset.nav===view));
+ closeCart();
+ if(view==='coleccion') renderCatalog();
+ if(view==='producto') renderProduct(h[1]);
+ if(view==='recomendador'){ step=0; answers=[]; renderQuiz(); }
+ if(view!=='producto') document.title = 'ARABÔME · Demo';
+ if(view==='inicio' && h[1]){ setTimeout(()=>{ const t=document.getElementById(h[1]); if(t) t.scrollIntoView(); },0); }
+ else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
